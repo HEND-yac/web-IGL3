@@ -1,0 +1,230 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+h1 {
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+/* Section de saisie */
+.input-section {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: #f8f9fa;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+#taskInput:focus {
+    border-color: #4a90e2;
+}
+
+#addBtn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#addBtn:hover {
+    background-color: #357abd;
+}
+
+/* Section des statistiques */
+.stats-section {
+    padding: 15px 20px;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+}
+
+.stats-section span {
+    font-weight: bold;
+    color: #333;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Section de recherche */
+.search-section {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #4a90e2;
+}
+
+/* Liste des tâches */
+.task-list {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item:hover {
+    background-color: #f8f9fa;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    margin-right: 15px;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Boutons d'action */
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-complete {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Section des actions générales */
+.actions-section {
+    padding: 15px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+#clearAllBtn {
+    background-color: #fd7e14;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#clearAllBtn:hover {
+    background-color: #e8590c;
+}
+
+/* Messages d'état */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.empty-state::before {
+    content: "📝";
+    font-size: 2em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+        border-radius: 8px;
+    }
+    
+    .input-section {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .stats-section {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .task-item {
+        padding: 12px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .task-actions {
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,34 @@
+<div class="score-container">
+  <h2>Quiz Terminé!</h2>
+  <div class="score-display">
+    <div class="score-item">
+      <span class="label">Score final:</span>
+      <span class="value score">{{ score }}</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Questions totales:</span>
+      <span class="value">{{ totalQuestions }}</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Réponses correctes:</span>
+      <span class="value correct">{{ correctAnswers }}</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Réponses incorrectes:</span>
+      <span class="value incorrect">{{ totalQuestions - correctAnswers }}</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Pourcentage:</span>
+      <span class="value percentage">{{ getPercentage() }}%</span>
+    </div>
+  </div>
+  
+  <div class="performance-message">
+    <p [ngClass]="getPerformanceClass()">{{ getPerformanceMessage() }}</p>
+  </div>
+
+  <div class="actions">
+    <button routerLink="/game" class="retry-btn">Recommencer</button>
+    <button routerLink="/home" class="home-btn">Retour à l'accueil</button>
+  </div>
+</div>

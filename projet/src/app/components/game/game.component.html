@@ -1,0 +1,51 @@
+<div class="game-container">
+  <div class="game-header">
+    <h2>Quiz Game</h2>
+    <div class="stats">
+      <span>Question {{ currentQuestionIndex + 1 }} / {{ questions.length }}</span>
+      <span>Score: {{ score }}</span>
+      <span>Correctes: {{ correctAnswers }}</span>
+      <span>Incorrectes: {{ incorrectAnswers }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="currentQuestionIndex < questions.length; else gameOver">
+    <app-question 
+      [question]="questions[currentQuestionIndex]"
+      (answerSelected)="onAnswerSelected($event)"
+      [disabled]="questionAnswered">
+    </app-question>
+    
+    <div class="answer-input">
+      <label>Réponse directe:</label>
+      <input 
+        type="text" 
+        [(ngModel)]="userAnswer" 
+        [disabled]="questionAnswered"
+        placeholder="Tapez votre réponse ici">
+      <button 
+        (click)="submitAnswer()" 
+        [disabled]="questionAnswered || !userAnswer"
+        class="submit-btn">Valider</button>
+    </div>
+
+    <div *ngIf="questionAnswered" class="feedback">
+      <p [class.correct]="lastAnswerCorrect" [class.incorrect]="!lastAnswerCorrect">
+        {{ lastAnswerCorrect ? 'Correct!' : 'Incorrect!' }}
+        <br>La bonne réponse était: {{ questions[currentQuestionIndex].reponse }}
+      </p>
+      <button (click)="nextQuestion()" class="next-btn">Question suivante</button>
+    </div>
+
+    <div *ngIf="timerEnabled" class="timer">
+      <p>Temps restant: {{ timeLeft }}s</p>
+      <div class="timer-bar">
+        <div class="timer-fill" [style.width.%]="(timeLeft / questionTime) * 100"></div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #gameOver>
+    <app-score [score]="score" [totalQuestions]="questions.length" [correctAnswers]="correctAnswers"></app-score>
+  </ng-template>
+</div>
